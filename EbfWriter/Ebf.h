@@ -19,31 +19,31 @@
  * The data is stored as one continuos string of bytes
  * No attempt is made to verify that the data stored is correctly
  * formated ebf.
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.4 2003/07/21 15:37:03 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.5 2003/08/05 20:37:02 golpa Exp $
  */
 
 //extern const CLID& CLID_Ebf;
 
 namespace EbfWriterTds{
-  class Ebf : public DataObject{
-  public:
-    Ebf();
-    Ebf(char *newData,unsigned int dataLength);
-    virtual ~Ebf();
+    class Ebf : public DataObject{
+    public:
+        Ebf();
+        Ebf(char *newData,unsigned int dataLength);
+        virtual ~Ebf();
 
-    ///Retrieve pointer to the ebf data.
-    char *get(unsigned int &dataLength) const;
+        ///Retrieve pointer to the ebf data.
+        char *get(unsigned int &dataLength) const;
 
-    ///Store the provided ebf pointer in and delete any previous ones
-    void set(char *newData, unsigned int dataLength);
+        ///Store the provided ebf pointer in and delete any previous ones
+        void set(char *newData, unsigned int dataLength);
 
-    virtual std::ostream& fillStream(std::ostream &s) const;
-    friend std::ostream& operator << (std::ostream &s, const Ebf& obj);
-  private:
-    ///Pointer to the ebf data
-    char *data;
-    ///Number of bytes that are stored in data pointer
-    unsigned int length;
-  };
+        virtual std::ostream& fillStream(std::ostream &s) const;
+        friend std::ostream& operator << (std::ostream &s, const Ebf& obj);
+    private:
+        ///Pointer to the ebf data
+        char *m_data;
+        ///Number of bytes that are stored in data pointer
+        unsigned int m_length;
+    };
 };
 #endif

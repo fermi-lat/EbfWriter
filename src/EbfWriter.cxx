@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.5 2003/07/21 15:35:03 golpa Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.6 2003/08/05 20:37:02 golpa Exp $
 
 /*
  * HISTORY
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.5 2003/07/21 15:35:03 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.6 2003/08/05 20:37:02 golpa Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -70,7 +70,6 @@ private:
 
     EbfGltCounters  m_latcounters;
     
-
     /// parameter to store the maximum size of an event
     /// this should be fairly static
     int         m_maxEvtSize;
@@ -85,13 +84,11 @@ const IAlgFactory& EbfWriterFactory = Factory;
 
 
 
-EbfWriter::EbfWriter(const std::string& name, ISvcLocator* pSvcLocator):Algorithm(name, pSvcLocator)
-{
+EbfWriter::EbfWriter(const std::string& name, ISvcLocator* pSvcLocator):
+        Algorithm(name, pSvcLocator){
     // declare properties with setProperties calls
     declareProperty("MaxEvtSize", m_maxEvtSize=0x10000);
-
     return;
-    
 }
 
 
