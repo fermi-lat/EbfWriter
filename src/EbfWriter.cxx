@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.2 2003/07/15 19:06:42 golpa Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.3 2003/07/16 16:13:57 golpa Exp $
 
 /*
  * HISTORY
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.2 2003/07/15 19:06:42 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.3 2003/07/16 16:13:57 golpa Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -168,11 +168,11 @@ StatusCode EbfWriter::execute()
     StatusCode    sc = StatusCode::SUCCESS;    
     
     DataObject *pnode=0;
-    if(eventSvc()->retrieveObject(EventModel::Filter::Event,pnode).isFailure())
-      eventSvc()->registerObject(EventModel::Filter::Event,new DataObject);
+    if(eventSvc()->retrieveObject("/Event/Filter",pnode).isFailure())
+      eventSvc()->registerObject("/Event/Filter",new DataObject);
 
     EbfWriterTds::Ebf *newEbf=new EbfWriterTds::Ebf;
-    eventSvc()->registerObject(EventModel::Filter::Ebf, newEbf);
+    eventSvc()->registerObject(EbfWriterTds::Path, newEbf);
     
     //
     // TKR

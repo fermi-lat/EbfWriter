@@ -9,6 +9,7 @@
 #include "GaudiKernel/ObjectVector.h"
 
 #include "Event/TopLevel/Definitions.h"
+#include "Event/TopLevel/EventModel.h"
 
 /**
  * @class Event
@@ -18,19 +19,20 @@
  * The data is stored as one continuos string of bytes
  * No attempt is made to verify that the data stored is correctly
  * formated ebf.
- * $Header$
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.1 2003/07/15 19:06:42 golpa Exp $
  */
 
-extern const CLID& CLID_Ebf;
+//extern const CLID& CLID_Ebf;
 
 namespace EbfWriterTds{
+  static const std::string Path;
   class Ebf : public DataObject{
   public:
     Ebf();
     Ebf(char *newData,unsigned int dataLength);
     virtual ~Ebf();
-    static const CLID& classID() {return CLID_Ebf;}
-    virtual const CLID& clID() const {return classID();}
+//    static const CLID& classID() {return CLID_Ebf;}
+//    virtual const CLID& clID() const {return classID();}
 
     ///Retrieve pointer to the ebf data.
     char *get(unsigned int &dataLength) const;
