@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.7 2003/08/08 19:25:37 golpa Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.8 2003/08/19 04:39:43 burnett Exp $
 
 /*
  * HISTORY
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.7 2003/08/08 19:25:37 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.8 2003/08/19 04:39:43 burnett Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -73,7 +73,8 @@ private:
     /// parameter to store the maximum size of an event
     /// this should be fairly static
     int         m_maxEvtSize;
-    
+    std::string m_filename;
+    ofstream m_ebfOutput;
     EbfCalConstants m_calConstants;
 };
 
@@ -88,6 +89,7 @@ EbfWriter::EbfWriter(const std::string& name, ISvcLocator* pSvcLocator):
         Algorithm(name, pSvcLocator){
     // declare properties with setProperties calls
     declareProperty("MaxEvtSize", m_maxEvtSize=0x10000);
+    declareProperty("fileName", m_filename="");
     return;
 }
 
@@ -121,7 +123,10 @@ StatusCode EbfWriter::initialize()
                                                  // 1 part in 10**-5
                               (double)90 * 60.); // Period of the clock
                                                  // variation, in secs
-   return sc;
+    if(m_filename != ""){
+        m_ebfOutput.open(m_filename.c_str());
+    }
+    return sc;
 }
 
 
@@ -214,6 +219,9 @@ StatusCode EbfWriter::execute()
     unsigned int length;
     char *data=m_output.write  (length);
     newEbf->set(data,length);
+    if(m_filename!=""){
+      m_ebfOutput.write(data,length);
+    }
     return sc;
 }
 
@@ -221,5 +229,8 @@ StatusCode EbfWriter::execute()
 /// clean up
 StatusCode EbfWriter::finalize()
 {
+    if(m_filename!=""){
+        m_ebfOutput.close();
+    }
     return StatusCode::SUCCESS;
 }
