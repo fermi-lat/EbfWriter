@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.9 2002/11/08 15:28:36 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.1.1.1 2003/07/03 18:13:57 golpa Exp $
 
 /*
  * HISTORY
@@ -37,7 +37,7 @@
 #include "Event/Digi/CalDigi.h"
 #include "Event/Digi/AcdDigi.h"
 
-#include "Event/Filter/Ebf.h"
+#include "EbfWriter/Ebf.h"
 
 #include "EbfAcdData.h"
 #include "EbfCalData.h"
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.9 2002/11/08 15:28:36 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.1.1.1 2003/07/03 18:13:57 golpa Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -172,7 +172,7 @@ StatusCode EbfWriter::execute()
     if(eventSvc()->retrieveObject(EventModel::Filter::Event,pnode).isFailure())
       eventSvc()->registerObject(EventModel::Filter::Event,new DataObject);
 
-    Event::Ebf *newEbf=new Event::Ebf;
+    EbfWriterTds::Ebf *newEbf=new EbfWriterTds::Ebf;
     eventSvc()->registerObject(EventModel::Filter::Ebf, newEbf);
     
     //
