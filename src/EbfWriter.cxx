@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.8 2003/08/19 04:39:43 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.9 2003/11/05 16:37:24 golpa Exp $
 
 /*
  * HISTORY
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.8 2003/08/19 04:39:43 burnett Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.9 2003/11/05 16:37:24 golpa Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -74,7 +74,7 @@ private:
     /// this should be fairly static
     int         m_maxEvtSize;
     std::string m_filename;
-    ofstream m_ebfOutput;
+    std::ofstream m_ebfOutput;
     EbfCalConstants m_calConstants;
 };
 
