@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/mainpage.h,v 1.1.1.1 2003/07/03 18:13:57 golpa Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/mainpage.h,v 1.2 2003/08/08 19:25:37 golpa Exp $
 // (Special "header" just for doxygen)
 
 /** @mainpage  package EbfWriter
@@ -18,6 +18,7 @@ packages needed to build the simulation/ reconstruction environment.  This packa
     <li> generating histograms and tuples, which would then be written to a ROOT file. (Need to document this.)
   </ul>
 
+  @image html EbfWriter.jpg
   <hr>
   @section jobOptions src/jobOptions.txt
   @include jobOptions.txt
