@@ -19,13 +19,13 @@
  * The data is stored as one continuos string of bytes
  * No attempt is made to verify that the data stored is correctly
  * formated ebf.
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.1 2003/07/15 19:06:42 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.2 2003/07/19 22:03:18 golpa Exp $
  */
 
 //extern const CLID& CLID_Ebf;
 
 namespace EbfWriterTds{
-  static const std::string Path;
+  static const std::string Path = EventModel::EventHeader + "/Filter" + "/Ebf";
   class Ebf : public DataObject{
   public:
     Ebf();
