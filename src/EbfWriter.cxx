@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.6 2003/08/05 20:37:02 golpa Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.7 2003/08/08 19:25:37 golpa Exp $
 
 /*
  * HISTORY
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.6 2003/08/05 20:37:02 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.7 2003/08/08 19:25:37 golpa Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -210,7 +210,7 @@ StatusCode EbfWriter::execute()
     // Put the contributor's data into EBF format and write it out 
     //
     m_output.format (&acd, &cal, &tkr, &glt);
-    if (level <= MSG::INFO) m_output.print  ();
+    if (level <= MSG::DEBUG) m_output.print  ();
     unsigned int length;
     char *data=m_output.write  (length);
     newEbf->set(data,length);
