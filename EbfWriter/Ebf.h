@@ -19,7 +19,7 @@
  * The data is stored as one continuos string of bytes
  * No attempt is made to verify that the data stored is correctly
  * formated ebf.
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.5 2003/08/05 20:37:02 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.6 2003/08/08 19:25:37 golpa Exp $
  */
 
 //extern const CLID& CLID_Ebf;
@@ -45,5 +45,11 @@ namespace EbfWriterTds{
         ///Number of bytes that are stored in data pointer
         unsigned int m_length;
     };
+
+   inline  char *Ebf::get(unsigned int &dataLength) const{
+    dataLength=m_length;
+    return m_data;
+}
+
 };
 #endif
