@@ -1,10 +1,10 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.9 2003/11/05 16:37:24 golpa Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.10 2003/11/05 18:36:57 golpa Exp $
 
 /*
  * HISTORY
  *
  * DATE         WHO    WHAT
- * 5/28/03  russell    Added what I deemed to be a kludge to take care of the 
+ * 5/28/03  russel     Added what I deemed to be a kludge to take care of the 
  *                     fact that the algorithm gets called make after all the
  *                     events have been read. If any of the DIGI pointers are
  *                     NULL, I take this as bad, and just return -1. I think
@@ -54,7 +54,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.9 2003/11/05 16:37:24 golpa Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.10 2003/11/05 18:36:57 golpa Exp $
 */
 class EbfWriter : public Algorithm 
 {
