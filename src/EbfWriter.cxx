@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.16 2006/03/03 00:50:30 winer Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.17 2006/03/06 02:23:13 lsrea Exp $
 
 /*
  * HISTORY
@@ -67,7 +67,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.16 2006/03/03 00:50:30 winer Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.17 2006/03/06 02:23:13 lsrea Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -457,10 +457,13 @@ StatusCode EbfWriter::finalize()
 //    printf("EbfWriter: Finalize\n");
     f_output.close();
     m_ReadFile == 1 ? m_input.close() : m_output.close();
-    
-    printf("EbfWriter:: Wrote %i Total Events\n",m_countEbfEvents);
+
+    MsgStream log(msgSvc(), name());
+
+    log << MSG::INFO << "Wrote "<< m_countEbfEvents<<" Total Events\n" << endreq;
+#if 0 // this writes a bunch of stuff that is not clear we want
     f_output.dumpTriggerInfo();
-    
+#endif
     return StatusCode::SUCCESS;
 }
 
