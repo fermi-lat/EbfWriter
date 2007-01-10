@@ -1,7 +1,7 @@
 /** @file FesExposure.cxx
     @brief declare and implement the Algorithm FesExposure
 
-    $Header$
+    $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/FesExposure.cxx,v 1.2 2006/11/12 03:05:02 burnett Exp $
 
 */
 // Include files
@@ -24,6 +24,8 @@
 #include "FluxSvc/IFluxSvc.h"
 #include "flux/IFlux.h"
 #include "astro/GPS.h"
+#include "facilities/Util.h"
+
 
 
 #include <cassert>
@@ -145,9 +147,12 @@ StatusCode FesExposure::initialize(){
    m_att_data = m_att_data_start;
     
 
-// Open up the output file
+// Open up the output file, with optional env var
+   std::string filename(m_FileName); 
+   facilities::Util::expandEnvVar(&filename);
+
    char file[120];
-   sprintf(file,"%s.ldf",m_FileName.c_str());
+   sprintf(file,"%s.ldf",filename.c_str());
 
    m_outfile = fopen (file, "wb");
    if (!m_outfile)

@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.17 2006/03/06 02:23:13 lsrea Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.18 2006/11/12 03:20:41 burnett Exp $
 
 /*
  * HISTORY
@@ -58,6 +58,8 @@
 #include "FESOutput.h"
 
 #include "astro/PointingTransform.h"
+#include "facilities/Util.h"
+
 
 
 #include <fstream>
@@ -67,7 +69,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.17 2006/03/06 02:23:13 lsrea Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.18 2006/11/12 03:20:41 burnett Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -206,9 +208,13 @@ StatusCode EbfWriter::initialize()
     m_output.setPrint (log.level () <= MSG::DEBUG);
     m_output.setLdfFormat(m_LdfFormat);
     
-// Are we reading or outputing a file?    
-    m_ReadFile==1 ? m_input.open (m_FileName.c_str(), m_maxEvtSize, m_LdfFormat) :
-                    m_output.open(m_FileName.c_str(), m_maxEvtSize);
+// Are we reading or outputing a file?  
+    // first expand the filename if env var 
+    std::string filename(m_FileName); 
+    facilities::Util::expandEnvVar(&filename);
+
+    m_ReadFile==1 ? m_input.open (filename.c_str(), m_maxEvtSize, m_LdfFormat) :
+                    m_output.open(filename.c_str(), m_maxEvtSize);
 
 //     m_input.open (m_FileName.c_str(), m_maxEvtSize);
 
@@ -225,7 +231,7 @@ StatusCode EbfWriter::initialize()
 
     /* Make FES Files */    
     f_output.setVersion(m_FesVersion);
-    if(m_FesFiles>0) f_output.open(m_FileName.c_str(),m_FileDesc.c_str());
+    if(m_FesFiles>0) f_output.open(filename.c_str(),m_FileDesc.c_str());
 
     PreEvtTime = 0.;
     m_countEbfEvents =0;
