@@ -19,7 +19,7 @@
  * The data is stored as one continuos string of bytes
  * No attempt is made to verify that the data stored is correctly
  * formated ebf.
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.7 2003/08/15 21:20:20 burnett Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.8 2003/08/17 22:27:23 burnett Exp $
  */
 
 //extern const CLID& CLID_Ebf;
@@ -37,6 +37,9 @@ namespace EbfWriterTds{
         ///Store the provided ebf pointer in and delete any previous ones
         void set(char *newData, unsigned int dataLength);
 
+        unsigned int getSequence() const { return m_gemSeq; };
+        void setSequence(unsigned int seq) { m_gemSeq = seq;  };
+
         virtual std::ostream& fillStream(std::ostream &s) const;
         friend std::ostream& operator << (std::ostream &s, const Ebf& obj);
     private:
@@ -44,6 +47,8 @@ namespace EbfWriterTds{
         char *m_data;
         ///Number of bytes that are stored in data pointer
         unsigned int m_length;
+        ///Save the GEM sequence number
+        unsigned int m_gemSeq;
     };
 
     //inline stuff for client
