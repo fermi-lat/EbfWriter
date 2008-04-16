@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.20 2007/09/24 19:00:45 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.21 2008/01/22 20:18:53 fewtrell Exp $
 
 /*
  * HISTORY
@@ -66,7 +66,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.20 2007/09/24 19:00:45 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.21 2008/01/22 20:18:53 fewtrell Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -505,7 +505,7 @@ StatusCode EbfWriter::getMcEvent(double oEn)
 //    printf("Monte Carlo sourceId %i and sequence %i\n",m_sourceId,m_sequence); 
 
 
-    double MC_Id = 99999;
+    double MC_Id = 0;
     double MC_Charge = 9999;
     double MC_Energy = 0.;
     double MC_x0 =9999.;
@@ -528,6 +528,7 @@ StatusCode EbfWriter::getMcEvent(double oEn)
         if(numIncident == 1) {
             Event::McParticle::StdHepId hepid= (*pMCPrimary)->particleProperty();
             MC_Id = (double)hepid;
+	   
             ParticleProperty* ppty = m_ppsvc->findByStdHepID( hepid );
             if (ppty) {
                 std::string name = ppty->particle(); 
@@ -535,6 +536,10 @@ StatusCode EbfWriter::getMcEvent(double oEn)
             }
             pMCPrimary++;
         }
+	
+	 int mcPartID = (int)(fabs(MC_Id));
+	 if(mcPartID>127) mcPartID = 128;
+         m_McInfo.sourceType     = mcPartID;
         
         HepPoint3D Mc_x0;
         // launch point for charged particle; conversion point for neutral
