@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/test/jobOptions.txt,v 1.3 2004/02/27 11:03:38 kuss Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/test/jobOptions.txt,v 1.4 2006/03/28 21:43:35 cohen Exp $
 
 ApplicationMgr.DLLs+= { "GaudiAlg", "GaudiAud"};
 ApplicationMgr.ExtSvc += {"ChronoStatSvc"};
@@ -94,7 +94,7 @@ ApplicationMgr.ExtSvc += { "GlastPropagatorSvc" };
 
 ApplicationMgr.DLLs +={
     "CalibSvc",
-    "CalRecon", "CalUtil", "TkrUtil",
+    "CalRecon", "TkrUtil",
     "TkrRecon"
     };
 Reconstruction.Members={
