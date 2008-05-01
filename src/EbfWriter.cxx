@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.21 2008/01/22 20:18:53 fewtrell Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.22 2008/04/16 17:23:37 winer Exp $
 
 /*
  * HISTORY
@@ -66,7 +66,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.21 2008/01/22 20:18:53 fewtrell Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.22 2008/04/16 17:23:37 winer Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -99,6 +99,7 @@ private:
     bool        m_WriteEbf;
     bool        m_LdfFormat;
     bool        m_storeOnTds;
+    bool        m_reqGemTrig;
 
     int m_sourceId;
     int m_sequence;
@@ -159,7 +160,8 @@ EbfWriter::EbfWriter(const std::string& name, ISvcLocator* pSvcLocator) :
     declareProperty("CalEncode" ,m_CalEncodeFlag=-1);
     declareProperty("LdfFormat" ,m_LdfFormat=false);
     declareProperty("StoreOnTds",m_storeOnTds=true);
-
+    declareProperty("ReqGemTrig",m_reqGemTrig=true);
+ 
     return;
 }
 
@@ -363,7 +365,7 @@ StatusCode EbfWriter::execute()
     //
     // Put the contributor's data into EBF format and write it out 
     //
-    unsigned int evtSize = m_output.format (&acd, &cal, &tkr, &gem, (unsigned int *)&m_McInfo);
+    unsigned int evtSize = m_output.format (&acd, &cal, &tkr, &gem, (unsigned int *)&m_McInfo, m_reqGemTrig);
     //    if (level <= MSG::DEBUG) 
     //       m_output.print  ();
     
