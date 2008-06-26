@@ -7,6 +7,7 @@
 #include "GaudiKernel/StreamBuffer.h"
 #include "GaudiKernel/ContainedObject.h"
 #include "GaudiKernel/ObjectVector.h"
+#include "GaudiKernel/IInterface.h"
 
 #include "Event/TopLevel/Definitions.h"
 #include "Event/TopLevel/EventModel.h"
@@ -19,9 +20,10 @@
  * The data is stored as one continuos string of bytes
  * No attempt is made to verify that the data stored is correctly
  * formated ebf.
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.8 2003/08/17 22:27:23 burnett Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/EbfWriter/Ebf.h,v 1.9 2007/09/24 19:00:44 heather Exp $
  */
 
+static const CLID& CLID_Ebf = InterfaceID("Ebf", 1, 0);
 //extern const CLID& CLID_Ebf;
 
 namespace EbfWriterTds{
