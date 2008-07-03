@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.22 2008/04/16 17:23:37 winer Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.23.54.1 2008/06/26 19:19:11 heather Exp $
 
 /*
  * HISTORY
@@ -66,7 +66,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.22 2008/04/16 17:23:37 winer Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.23.54.1 2008/06/26 19:19:11 heather Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -357,9 +357,12 @@ StatusCode EbfWriter::execute()
     // to the TDS.  If so, we want to use the sequence number associated
     // with this initial instance, so we decrement the sequence number
     // by one, since the format call will increment it again
-    SmartDataPtr<EbfWriterTds::Ebf> orgEbf(eventSvc(), "/Event/Filter/Ebf");
-    if (orgEbf)
-      m_output.setNumEvtsOut(orgEbf->getSequence()-1);
+    DataObject *orgEbf;
+    StatusCode mySc = eventSvc()->findObject("/Event/Filter/Ebf", orgEbf);
+  
+ //   SmartDataPtr<EbfWriterTds::Ebf> orgEbf(eventSvc(), "/Event/Filter/Ebf");
+    if (mySc.isSuccess() && orgEbf)
+      m_output.setNumEvtsOut(dynamic_cast<EbfWriterTds::Ebf*>(orgEbf)->getSequence()-1);
     
     
     //
@@ -377,7 +380,10 @@ StatusCode EbfWriter::execute()
     // Write out the file
     unsigned int length;
     unsigned int *TdsBuffer;
-    if(m_storeOnTds) TdsBuffer = (unsigned int *)malloc(m_maxEvtSize*5);
+    if(m_storeOnTds) {
+        TdsBuffer = (unsigned int *)malloc(m_maxEvtSize*5);
+        memset(TdsBuffer,0,m_maxEvtSize*5);
+    }
     if(evtSize != 0) {
       data=m_output.write  (m_WriteEbf, length, TdsBuffer);
       m_countEbfEvents++;
