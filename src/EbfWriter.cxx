@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.23.54.1 2008/06/26 19:19:11 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.24 2008/07/03 16:48:20 heather Exp $
 
 /*
  * HISTORY
@@ -66,7 +66,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.23.54.1 2008/06/26 19:19:11 heather Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.24 2008/07/03 16:48:20 heather Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -379,7 +379,7 @@ StatusCode EbfWriter::execute()
     
     // Write out the file
     unsigned int length;
-    unsigned int *TdsBuffer;
+    unsigned int *TdsBuffer = 0;
     if(m_storeOnTds) {
         TdsBuffer = (unsigned int *)malloc(m_maxEvtSize*5);
         memset(TdsBuffer,0,m_maxEvtSize*5);
