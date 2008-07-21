@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/test/jobOptions.txt,v 1.4 2006/03/28 21:43:35 cohen Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/test/jobOptions.txt,v 1.5 2008/04/21 21:02:10 fewtrell Exp $
 
 ApplicationMgr.DLLs+= { "GaudiAlg", "GaudiAud"};
 ApplicationMgr.ExtSvc += {"ChronoStatSvc"};
@@ -45,7 +45,7 @@ ApplicationMgr.ExtSvc += { "GlastDetSvc"};
 GlastDetSvc.topVolume="LAT";
 
 
-GlastDetSvc.xmlfile="$(XMLGEODBSROOT)/xml/flight/flightSegVols.xml";
+GlastDetSvc.xmlfile="$(XMLGEODBSXMLPATH)/flight/flightSegVols.xml";
 GlastDetSvc.visitorMode="recon";
 
 // ----------------------------
