@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/SConscript,v 1.1 2008/08/15 21:22:40 ecephas Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/SConscript,v 1.2 2008/11/12 18:49:57 ecephas Exp $
 # Authors: Brian Winer <winer@mps.ohio-state.edu> 
 # Version: EbfWriter-01-07-01
 import os
@@ -21,4 +21,4 @@ if baseEnv['PLATFORM'] != 'win32':
 
 if baseEnv['PLATFORM'] == 'win32':
 	progEnv.Tool('registerObjects', package = 'EbfWriter', libraries = [EbfWriter], testApps = [test_EbfWriter], 
-	includes = listFiles(['EbfWriter/*.h']))
+	includes = listFiles(['EbfWriter/*.h', 'src/*.h']))
