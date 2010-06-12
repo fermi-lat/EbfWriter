@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/test/jobOptions.txt,v 1.5 2008/04/21 21:02:10 fewtrell Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/test/jobOptions.txt,v 1.6 2008/07/21 15:17:28 glastrm Exp $
 
 ApplicationMgr.DLLs+= { "GaudiAlg", "GaudiAud"};
 ApplicationMgr.ExtSvc += {"ChronoStatSvc"};
@@ -61,7 +61,7 @@ ApplicationMgr.ExtSvc += {"G4GeometrySvc"};
 Generator.Members = {"FluxAlg", "G4Generator"};
 G4Generator.defaultCutValue=0.7; // instead of 0.1 default
 
-#include "$FLUXSVCROOT/src/defaultOptions.txt"
+#include "$FLUXSVCJOBOPTIONSPATH/defaultOptions.txt"
 
 // Append (or replace) the list of source library documents
 FluxSvc.source_lib += {"$(G4GENERATORROOT)/src/test/test_sources.xml"};
