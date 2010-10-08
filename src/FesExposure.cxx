@@ -1,7 +1,7 @@
 /** @file FesExposure.cxx
     @brief declare and implement the Algorithm FesExposure
 
-    $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/FesExposure.cxx,v 1.2 2006/11/12 03:05:02 burnett Exp $
+    $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/FesExposure.cxx,v 1.3.608.1 2010/09/18 03:37:16 heather Exp $
 
 */
 // Include files
@@ -97,8 +97,9 @@ private:
 };
 //------------------------------------------------------------------------
 
-static const AlgFactory<FesExposure>  Factory;
-const IAlgFactory& FesExposureFactory = Factory;
+//static const AlgFactory<FesExposure>  Factory;
+//const IAlgFactory& FesExposureFactory = Factory;
+DECLARE_ALGORITHM_FACTORY(FesExposure);
 
 //------------------------------------------------------------------------
 //! ctor
