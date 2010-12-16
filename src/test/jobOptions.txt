@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/test/jobOptions.txt,v 1.6 2008/07/21 15:17:28 glastrm Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/test/jobOptions.txt,v 1.7 2010/06/12 01:34:08 jrb Exp $
 
 ApplicationMgr.DLLs+= { "GaudiAlg", "GaudiAud"};
 ApplicationMgr.ExtSvc += {"ChronoStatSvc"};
@@ -64,7 +64,7 @@ G4Generator.defaultCutValue=0.7; // instead of 0.1 default
 #include "$FLUXSVCJOBOPTIONSPATH/defaultOptions.txt"
 
 // Append (or replace) the list of source library documents
-FluxSvc.source_lib += {"$(G4GENERATORROOT)/src/test/test_sources.xml"};
+FluxSvc.source_lib += {"$(G4GENERATORJOBOPTIONSPATH)/test/test_sources.xml"};
 FluxAlg.source_name="muon_pencil_angle";
 
 
