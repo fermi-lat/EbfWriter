@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/SConscript,v 1.12 2010/12/16 16:16:55 lsrea Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/SConscript,v 1.13 2010/12/16 18:51:57 lsrea Exp $
 # Authors: Brian Winer <winer@mps.ohio-state.edu> 
 # Version: EbfWriter-01-08-04
 import os
@@ -23,4 +23,4 @@ progEnv.Tool('registerTargets', package='EbfWriter',
              libraryCxts=[[EbfWriter, libEnv]],
              testAppCxts = [[test_EbfWriter, progEnv]], 
              includes = listFiles(['EbfWriter/*.h']),
-             jo = ['src/test/jobOptions.txt','src/test/test_sources.xml])
+             jo = ['src/test/jobOptions.txt','src/test/test_sources.xml'])
