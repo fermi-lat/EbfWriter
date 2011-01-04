@@ -1,7 +1,7 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/SConscript,v 1.14 2010/12/17 22:41:11 lsrea Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/SConscript,v 1.15 2010/12/17 22:44:26 lsrea Exp $
 # Authors: Brian Winer <winer@mps.ohio-state.edu> 
-# Version: EbfWriter-01-08-05
+# Version: EbfWriter-01-09-00
 import os
 Import('baseEnv')
 Import('listFiles')
