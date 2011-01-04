@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.25 2008/07/18 19:31:46 usher Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.26 2009/02/17 21:50:43 usher Exp $
 
 /*
  * HISTORY
@@ -68,7 +68,7 @@
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.25 2008/07/18 19:31:46 usher Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.26 2009/02/17 21:50:43 usher Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -349,7 +349,7 @@ StatusCode EbfWriter::execute()
     if(pCals) {
       if(!(pCals->empty())){
         Event::CalCluster* calCluster = pCals->front();
-        obsEn  = calCluster->getCalParams().getEnergy();
+        obsEn  = calCluster->getMomParams().getEnergy();
       }
     } else {
       //           log << MSG::WARNING << "No calCluster found: No Obs. will be stored in EBF file header" << endreq; 
