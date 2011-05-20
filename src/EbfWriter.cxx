@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.26 2009/02/17 21:50:43 usher Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.27 2011/01/04 22:43:15 usher Exp $
 
 /*
  * HISTORY
@@ -64,11 +64,12 @@
 #include <fstream>
 #include <cassert>
 #include <map>
+using namespace CLHEP;
 /** 
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.26 2009/02/17 21:50:43 usher Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.27 2011/01/04 22:43:15 usher Exp $
 */
 class EbfWriter : public Algorithm 
 {
