@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.27 2011/01/04 22:43:15 usher Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/EbfWriter.cxx,v 1.28 2011/05/20 15:01:26 heather Exp $
 
 /*
  * HISTORY
@@ -69,7 +69,7 @@ using namespace CLHEP;
  * @class EbfWriter
  * @brief An algorithm to convert the digi data to ebf
  * 
- * $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/EbfWriter.cxx,v 1.27 2011/01/04 22:43:15 usher Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/EbfWriter.cxx,v 1.28 2011/05/20 15:01:26 heather Exp $
 */
 class EbfWriter : public Algorithm 
 {
@@ -142,9 +142,9 @@ private:
 
 
 
-static const AlgFactory<EbfWriter>  Factory;
-const IAlgFactory& EbfWriterFactory = Factory;
-
+//static const AlgFactory<EbfWriter>  Factory;
+//const IAlgFactory& EbfWriterFactory = Factory;
+DECLARE_ALGORITHM_FACTORY(EbfWriter);
 
 
 
