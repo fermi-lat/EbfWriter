@@ -1,4 +1,4 @@
-//$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/src/test/jobOptions.txt,v 1.9 2010/12/17 22:41:11 lsrea Exp $
+//$Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/src/test/jobOptions.txt,v 1.10 2011/12/12 20:46:56 heather Exp $
 
 ApplicationMgr.DLLs+= { "GaudiAlg", "GaudiAud"};
 ApplicationMgr.ExtSvc += {"ChronoStatSvc"};
@@ -84,7 +84,7 @@ Digitization.Members = {
 //
 ApplicationMgr.DLLs +={ "Trigger"};
 Trigger.Members = {"TriggerAlg"};
-TriggerAlg.mask = -1; // all bits on by default
+TriggerAlg.mask = "0xffffffff"; // all bits on by default
 
 
 // ----------------------------
