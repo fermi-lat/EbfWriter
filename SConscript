@@ -1,7 +1,8 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/SConscript,v 1.14 2010/12/17 22:41:11 lsrea Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/EbfWriter/SConscript,v 1.21 2012/01/12 20:05:05 heather Exp $
 # Authors: Brian Winer <winer@mps.ohio-state.edu> 
-# Version: EbfWriter-01-08-05
+# Version: EbfWriter-01-08-05-gr01
+
 import os
 Import('baseEnv')
 Import('listFiles')
@@ -10,8 +11,8 @@ progEnv = baseEnv.Clone()
 libEnv = baseEnv.Clone()
 
 libEnv.Tool('addLinkDeps', package='EbfWriter', toBuild='component')
-EbfWriter = libEnv.SharedLibrary('EbfWriter',
-                                 listFiles(['src/*.cxx','src/Dll/*.cxx']))
+EbfWriter = libEnv.ComponentLibrary('EbfWriter',
+                                    listFiles(['src/*.cxx']))
 
 progEnv.Tool('EbfWriterLib')
 
