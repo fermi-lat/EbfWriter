@@ -1,7 +1,9 @@
-#$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/EbfWriterLib.py,v 1.2 2008/11/12 19:34:50 ecephas Exp $
+#$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/EbfWriter/EbfWriterLib.py,v 1.3 2009/11/13 23:20:55 jrb Exp $
 def generate(env, **kw):
     if not kw.get('depsOnly', 0):
         env.Tool('addLibrary', library = ['EbfWriter'])
+        if env['PLATFORM']=='win32' and env.get('CONTAINERNAME','')=='GlastRelease':
+	    env.Tool('findPkgPath', package = 'EbfWriter') 
     env.Tool('CalXtalResponseLib')
     env.Tool('TriggerLib')
     env.Tool('CalUtilLib')
